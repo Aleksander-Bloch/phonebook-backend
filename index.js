@@ -5,6 +5,17 @@ app.get('/api/persons', (request, response) => {
   response.json(persons)
 })
 
+app.get('/api/info', (request, response) => {
+  const receivedAt = new Date()
+  const numPersons = persons.length
+  response.send(
+    `
+    <p>Phonebook has info for ${numPersons} people</p>
+    <p>${receivedAt}</p>
+    `
+  )
+})
+
 const PORT = 3001
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`)
